@@ -1,14 +1,23 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import Board from '@/components/Board'
+'use client';
+import { useState, createContext, useContext } from 'react';
+import Image from 'next/image';
+import { Inter } from '@next/font/google';
+import Board from '@/components/Board';
+import { UserProvider } from "../context/UserContext";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
   return (
-    <div className='min-w-full min-h-screen grid place-items-center '>
-      <Board/>
-    </div>
+    <>
+      <UserProvider>
+        <div className='min-w-full min-h-screen grid place-items-center '>
+          <Board/>
+        </div>
+      </UserProvider>
+    </>
   )
 }
 // 7 cols x 6rows

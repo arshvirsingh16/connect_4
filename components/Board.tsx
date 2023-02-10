@@ -6,7 +6,7 @@ import { useUser } from '../context/UserContext'
 const Board = () => {
 
   const [board, setBoard] = React.useState([[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]])
-
+  const { user } = useUser()
 
   return (
     <div className='bg-blue-700 container max-w-fit p-3 flex gap-2'>

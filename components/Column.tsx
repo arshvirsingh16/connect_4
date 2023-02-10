@@ -5,11 +5,10 @@ import { useUser } from '../context/UserContext'
 interface ColumnProps {
   columnboard: number[]
   columnNumber: number
-  board: number[][]
-  setBoard: React.Dispatch<React.SetStateAction<number[][]>>
+  updateBoard: (columnIndex:number, column:number[]) => void
 }
 
-const Column = ({columnboard, columnNumber, board, setBoard}: ColumnProps) => {
+const Column = ({columnboard, columnNumber, updateBoard}: ColumnProps) => {
   const {turn, setTurn} = useUser()
 
   const [column, setColumn] = useState(columnboard)
@@ -18,14 +17,17 @@ const Column = ({columnboard, columnNumber, board, setBoard}: ColumnProps) => {
     for(let i = column.length; i >= 0; i--){
       const newColumn = [...column]
       if(column[i] === 0){
-        console.log(turn)
         newColumn[i] = turn
         setColumn(newColumn)
+        handleUpdate(newColumn)
         break
       }
     }
-    console.log(column)
+  }
+
+  const handleUpdate = (updatedColumn:number[]) => {
     updateTurn();
+    updateBoard(columnNumber, updatedColumn);
   }
 
   const updateTurn = () => {
